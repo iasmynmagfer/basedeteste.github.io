@@ -1,0 +1,96 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 1%;
+}
+
+.navegacao {
+    background-color: #DCDCDC;
+    color: black;
+    height: 50px;
+}
+
+.navegacao ul {
+    margin-top: 0;
+    list-style: none;
+    padding-left: 0;
+    text-align: right;
+    height: 50px;
+}
+
+.navegacao li {
+    display: inline-block;
+    padding-left: 30px;
+    padding-right: 30px;
+    line-height: 50px;
+    font-size: 18px;
+    font-weight: 100;
+}
+
+.navegacao a {
+    text-decoration: none;
+    text-decoration-style: none;
+    color: black;
+}
+
+.navegacao a:hover {
+    color: white;
+}
+
+.conteudo {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.conteudo div {
+    display: inline-block;
+}
+
+.conteudo-img {
+    width: 30%;
+    margin-top: 3%;
+    text-align: center;
+}
+
+.conteudo-img img{
+    width: 60%; 
+    vertical-align: middle;
+}
+ 
+.conteudo-corpo {
+    width: 69%;
+    vertical-align: top;
+    min-height: 470px;
+}
+
+.conteudo-corpo h1 {
+    font-weight: 100;
+}
+
+.conteudo-corpo h2 {
+    font-weight: 100;  
+}
+
+.conteudo-corpo a{
+    text-decoration: none;
+    text-decoration-style: none; 
+    color: black;
+}
+
+.conteudo-corpo a:hover {
+    color: grey;
+}
+
+.codigo {
+    background-color:snow;
+    width: 50%;
+}
+
+.codigo p {
+    white-space: pre-line;
+}
+
+.lista-interna ul{
+    list-style-type: lower-alpha;    
+}

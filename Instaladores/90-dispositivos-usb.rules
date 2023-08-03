@@ -1,0 +1,96 @@
+#------------------ Regras UDEV ---------------------#
+
+# IMPRESSORAS
+
+# IMPRESSORA ELGIN I9
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", SYMLINK+="usb_I9", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# IMPRESSORA ELGIN I9
+#KERNEL=="ttyUSB*", KERNELS=="1-3", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", NAME = "ttyUSB0" SYMLINK+="usb_I9", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# IMPRESSORA ELGIN I9
+#KERNEL=="ttyUSB*", KERNELS=="1-1.1", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", NAME = "ttyUSB2", SYMLINK+="usb_I9", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# IMPRESSORA TANCA TP-550
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", SYMLINK+="usb_TANCA_TP550", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# IMPRESSORA TANCA TP-550
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5743", SYMLINK+="usb_TANCA_TP550", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# IMPRESSORA CONTROL ID
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="3036", ATTRS{idProduct}=="0001", SYMLINK+="usb_CONTROL_ID", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# IMPRESSORA EPSON TM-20
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="04b8", ATTRS{idProduct}=="0e27", SYMLINK+="usb_EPSON_TM20", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# IMPRESSORA EPSON TM-20X
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="04b8", ATTRS{idProduct}=="0e03", SYMLINK+="usb_EPSON_TM20X", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# IMPRESSORA DARUMA_DR800
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="23b8", ATTRS{idProduct}=="0005", SYMLINK+="usb_DR800", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# IMPRESSORA BEMATECH MP-4200 TH
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="0b1b", ATTRS{idProduct}=="0003", SYMLINK+="usb_4200TH", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# IMPRESSORA CIS PR-3000
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="1cbe", ATTRS{idProduct}=="0002", SYMLINK+="usb_PR3000", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# PINPADS
+
+# GERTEC PPC900
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="1753", ATTRS{idProduct}=="c901", SYMLINK+="usb_PPC900", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# GERTEC PPC920
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="1753", ATTRS{idProduct}=="c902", SYMLINK+="usb_PPC920", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# INGENICO iPP320
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="079b", ATTRS{idProduct}=="0028", SYMLINK+="usb_ipp320", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# INGENICO LANE3000
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="0b00", ATTRS{idProduct}=="0084", SYMLINK+="usb_LANE3000", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# verifone vx
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="11ca", ATTRS{idProduct}=="0219", SYMLINK+="usb_vx820", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# TOLEDO 8217
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="1509", ATTRS{idProduct}=="2206", SYMLINK+="usb_8217", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# SCANNER_VSi
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="05f9", ATTRS{idProduct}=="4002", SYMLINK+="usb_VSi", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# SCANNER 7820
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="0c2e", ATTRS{idProduct}=="0009", SYMLINK+="usb_7820", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# SCANNER EL4200
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="0b7f", ATTRS{idProduct}=="0fe7", SYMLINK+="usb_EL4200", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# MFEs
+
+# TANCA MFE
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="0re", ATTRS{idProduct}=="a4a7", SYMLINK+="usb_MFE", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# ELGIN MFE SMART
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="2fe7", ATTRS{idProduct}=="0001", SYMLINK+="usb_MFE", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# ELGIN MFE
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="0525", ATTRS{idProduct}=="a4a6", SYMLINK+="usb_MFE", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# GERTEC MFE
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="1753", ATTRS{idProduct}=="0a04", SYMLINK+="usb_MFE", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# CSDEVICES MFE
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="2047", ATTRS{idProduct}=="0a62", SYMLINK+="usb_MFE", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# OUTROS
+
+# ADAPTADOR USB SERIAL
+KERNEL=="*[0-9]", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="usb_Adaptador_USB_SERIAL", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# TORRE
+KERNEL=="ttyUSB*", KERNELS=="1-2", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", NAME = "ttyUSB1" SYMLINK+="usb_TORRE", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# ADAPTADOR USB_SERIAL INTERNO COM5
+KERNEL=="ttyUSB*", KERNELS=="1-1.4", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", NAME = "ttyUSB0", SYMLINK+="usb_COM5", OWNER="pdv", GROUP="pdv", MODE="0666"
+
+# ADAPTADOR USB_SERIAL INTERNO COM6
+KERNEL=="ttyUSB*", KERNELS=="1-1.3", SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", NAME = "ttyUSB1", SYMLINK+="usb_COM6", OWNER="pdv", GROUP="pdv", MODE="0666"
