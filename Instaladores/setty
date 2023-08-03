@@ -1,0 +1,254 @@
+#!/bin/sh
+#
+# Configura e inicializa modulos de drivers de seriais
+#
+#-------------------------------------------------------------------------#
+# Descarrega modulos
+#-------------------------------------------------------------------------#
+echo -n " * Removendo modulo \033[1;34mcp210x\033[0m      "
+if $(rmmod cp210x 2> /dev/null); then
+  echo " \033[1;32mOK\033[0m "
+else
+  echo " \033[1;33mNone\033[0m "
+fi
+
+echo -n " * Removendo modulo \033[1;34mftdi_sio\033[0m    "
+if $(rmmod ftdi_sio 2> /dev/null); then
+  echo " \033[1;32mOK\033[0m "
+else
+  echo " \033[1;33mNone\033[0m "
+fi
+echo -n " * Removendo modulo \033[1;34mpl2303\033[0m    "
+if $(rmmod pl2303 2> /dev/null); then
+  echo " \033[1;32mOK\033[0m "
+else
+  echo " \033[1;33mNone\033[0m "
+fi
+echo -n " * Removendo modulo \033[1;34musbserial\033[0m   "
+
+if $(rmmod usblp 2> /dev/null); then
+  echo " \033[1;32mOK\033[0m "
+else
+  echo " \033[1;33mNone\033[0m "
+fi
+
+echo -n " * Removendo modulo \033[1;34musblp\033[0m   "
+
+if $(rmmod usbserial 2> /dev/null); then
+  echo " \033[1;32mOK\033[0m "
+else
+  echo " \033[1;33mNone\033[0m "
+fi
+
+echo -n " * Removendo modulo \033[1;34mcdc-acm\033[0m     "
+if $(rmmod cdc-acm 2> /dev/null); then
+  echo " \033[1;32mOK\033[0m "
+else
+  echo " \033[1;33mNone\033[0m "
+fi
+
+echo -n " * Removendo modulo \033[1;34mmcs9865\033[0m     "
+if $(rmmod mcs9865 2> /dev/null); then
+  echo " \033[1;32mOK\033[0m "
+else
+  echo " \033[1;33mNone\033[0m "
+fi
+
+echo -n " * Removendo modulo \033[1;34mmcs9865_isa\033[0m "
+if $(rmmod mcs9865_isa 2> /dev/null); then
+  echo " \033[1;32mOK\033[0m "
+else
+  echo " \033[1;33mNone\033[0m "
+fi
+
+echo -n " * Removendo modulo \033[1;34mmcs99xx\033[0m     "
+if $(rmmod 99xx 2> /dev/null); then
+  echo " \033[1;32mOK\033[0m "
+else
+  echo " \033[1;33mNone\033[0m "
+fi
+sleep 2
+#---------------------------------------------------------------------------#
+# Carrega modulos
+#---------------------------------------------------------------------------#
+
+echo -n " * Carregando modulo \033[1;34musbserial\033[0m  "
+if $(modprobe usbserial vendor=0x04b8 product=0x0e03 2> /dev/null); then
+  echo " \033[1;32mOK\033[0m "
+else
+  echo " \033[1;31mERR\033[0m "
+fi
+
+echo -n " * Carregando modulo \033[1;34mpl2303\033[0m    "
+if $(modprobe pl2303 2> /dev/null); then
+  echo " \033[1;32mOK\033[0m "
+else
+  echo " \033[1;31mERR\033[0m "
+fi
+
+echo -n " * Carregando modulo \033[1;34mcdc-acm\033[0m    "
+if $(modprobe cdc-acm 2> /dev/null); then
+  echo " \033[1;32mOK\033[0m "
+else
+  echo " \033[1;31mERR\033[0m "
+fi
+
+echo -n " * Carregando modulo \033[1;34mcp210x\033[0m     "
+if $(modprobe cp210x 2> /dev/null); then
+  echo " \033[1;32mOK\033[0m "
+else
+  echo " \033[1;31mERR\033[0m "
+fi
+
+echo -n " * Carregando modulo \033[1;34mmcs9865\033[0m    "
+if $(modprobe mcs9865 2> /dev/null); then
+  echo " \033[1;32mOK\033[0m "
+else
+  echo " \033[1;31mERR\033[0m "
+fi
+
+echo -n " * Carregando modulo \033[1;34mmcs99xx\033[0m    "
+if $(modprobe 99xx 2> /dev/null); then
+  echo " \033[1;32mOK\033[0m "
+else
+  echo " \033[1;31mERR\033[0m "
+fi
+#---------------------------------------------------------------------------#
+#              D I S P O S I T I V O S   U S B / S E R I A L 
+#---------------------------------------------------------------------------#
+ELGIN_I9=$(lsusb -v | grep -i "067b:2303")
+if [ ! -z "$ELGIN_I9" ]; then
+# Com 4 - Impressora Elgin I9
+  rm -f /dev/ttyS3
+  ln -s /dev/usb_I9 /dev/ttyS3
+fi
+#--------------------------------------------------------------------------#
+GERTEC_PPC900=$(lsusb -v | grep -i "1753:c901")
+if [ ! -z "$GERTEC_PPC900" ]; then
+# Com 7 - Pin Pad Gertec PPC 900
+  rm -f /dev/ttyS6
+  ln -s /dev/usb_PPC900 /dev/ttyS6
+fi
+#--------------------------------------------------------------------------#
+GERTEC_PPC920=$(lsusb -v | grep -i "1753:c902")
+if [ ! -z "$GERTEC_PPC920" ]; then
+# Com 7 - Pin Pad Gertec PPC 920
+  rm -f /dev/ttyS6
+  ln -s /dev/usb_PPC920 /dev/ttyS6
+fi
+#--------------------------------------------------------------------------#
+INGENICO_iPP320=$(lsusb -v | grep -i "079b:0028")
+if [ ! -z "$INGENICO_iPP320" ]; then
+# Com 7 - Pin Pad Ingenico iPP320
+  rm -f /dev/ttyS6
+  ln -s /dev/usb_ipp320 /dev/ttyS6
+fi
+#--------------------------------------------------------------------------#
+INGENICO_LANE3000=$(lsusb -v | grep -i "0b00:0084")
+if [ ! -z "$INGENICO_LANE3000" ]; then
+# Com 7 - Pin Pad Ingenico LANE 3000
+  rm -f /dev/ttyS6
+  ln -s /dev/usb_LANE3000 /dev/ttyS6
+fi
+#--------------------------------------------------------------------------#
+
+TOLEDO_8217=$(lsusb -v | grep -i "1509:2206")
+if [ ! -z "$TOLEDO_8217" ]; then
+# Com 6 - Balança Toledo 8217
+  rm -f /dev/ttyS5
+  ln -s /dev/usb_8217 /dev/ttyS5
+fi
+#--------------------------------------------------------------------------#
+VERIFONE_VX820=$(lsusb -v | grep -i "11ca:0219")
+if [ ! -z "$VERIFONE_VX820" ]; then
+# Com 7 - Pin Pad Verifone Vx 820
+  rm -f /dev/ttyS6
+  ln -s /dev/usb_vx820 /dev/ttyS6
+fi
+#--------------------------------------------------------------------------#
+SCANNER_VSi=$(lsusb -v | grep -i "05f9:4002")
+if [ ! -z "$SCANNER_VSi" ]; then
+# Com 3 - Scanner VSi
+  rm -f /dev/ttyS2
+  ln -s /dev/usb_VSi /dev/ttyS2
+fi
+#--------------------------------------------------------------------------#
+DARUMA_DR800=$(lsusb -v | grep -i "23b8:0005")
+if [ ! -z "$DARUMA_DR800" ]; then
+# Com 4 - Impressora Daruma DR-800
+  rm -f /dev/ttyS3
+  ln -s /dev/usb_DR800 /dev/ttyS3
+fi
+#--------------------------------------------------------------------------#
+BEMATECH_MP4200=$(lsusb -v | grep -i "0b1b:0003")
+if [ ! -z "$BEMATECH_MP4200" ]; then
+# Com 4 - Impressora Bematech MP-4200 TH
+  rm -f /dev/ttyS3
+  ln -s /dev/usb_4200TH /dev/ttyS3
+fi
+#--------------------------------------------------------------------------#
+CIS_PR3000=$(lsusb -v | grep -i "1cbe:0002")
+if [ ! -z "$CIS_PR3000" ]; then
+# Com 4 - Impressora CIS PR-3000
+  rm -f /dev/ttyS3
+  ln -s /dev/usb_PR3000 /dev/ttyS3
+fi
+#--------------------------------------------------------------------------#
+SCANNER_7820=$(lsusb -v | grep -i "0c2e:0009")
+if [ ! -z "$SCANNER_7820" ]; then
+# Com 3 - Scanner 7820
+  rm -f /dev/ttyS2
+  ln -s /dev/usb_7820 /dev/ttyS2
+fi
+#--------------------------------------------------------------------------#
+SCANNER_EL4200=$(lsusb -v | grep -i "0b7f:0fe7")
+if [ ! -z "$SCANNER_EL4200" ]; then
+# Com 3 - Scanner EL4200
+  rm -f /dev/ttyS2
+  ln -s /dev/usb_EL4200 /dev/ttyS2
+fi
+#--------------------------------------------------------------------------#
+CONTROL_ID=$(lsusb -v | grep -i "3036:0001")
+if [ ! -z "$CONTROL_ID" ]; then
+# Com 4 - Impressora Control ID
+  rm -f /dev/ttyS3
+  ln -s /dev/usb_CONTROL_ID /dev/ttyS3
+fi
+#--------------------------------------------------------------------------#
+EPSON_TM20=$(lsusb -v | grep -i "04b8:0e03")
+if [ ! -z "$EPSON_TM20" ]; then
+# Com 4 - Impressora Epson TM-20
+  rm -f /dev/ttyS3
+  ln -s /dev/usb_EPSON_TM20 /dev/ttyS3
+fi
+#--------------------------------------------------------------------------#
+EPSON_TM20X=$(lsusb -v | grep -i "04b8:0e27")
+if [ ! -z "$EPSON_TM20X" ]; then
+# Com 4 - Impressora Epson TM-20X
+  rm -f /dev/ttyS3
+  ln -s /dev/usb_EPSON_TM20X /dev/ttyS3
+fi
+#--------------------------------------------------------------------------#
+ADAPTADOR_USB_SERIAL=$(lsusb -v | grep -i "1a86:7523")
+if [ ! -z "$ADAPTADOR_USB_SERIAL" ]; then
+# Com 5 - Adaptador USB Serial 
+  rm -f /dev/ttyS4
+  ln -s /dev/usb_Adaptador_USB_SERIAL /dev/ttyS4
+fi
+#--------------------------------------------------------------------------#
+ADAPTADOR_INTERNO_COM5=$(lsusb -v | grep -i "067b:2303")
+if [ ! -z "$ADAPTADOR_INTERNO_COM5" ]; then
+# Com 5 - Adaptador COM5
+  rm -f /dev/ttyS4
+  ln -s /dev/usb_COM5 /dev/ttyS4
+fi
+#--------------------------------------------------------------------------#
+TANCA_TP550=$(lsusb -v | grep -i "0483:5740")
+if [ ! -z "$TANCA_TP550" ]; then
+# Com 4 - Impressora TANCA-TP550
+  rm -f /dev/ttyS3
+  ln -s /dev/usb_TP550 /dev/ttyS3
+fi
+#--------------------------------------------------------------------------#
+sleep 1
+exit 0
